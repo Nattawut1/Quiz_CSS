@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+  <html>
+    <head>
+
+      <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+      <link type="text/css" rel="stylesheet" href="css/materialize.min.css"  media="screen,projection"/>
+
+
+      <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    </head>
+
+    <body>
+      <nav>
+        <div class="nav-wrapper">
+          <a href="#" class="brand-logo center"><i class="material-icons prefix center">queue_music</i>Music App</a>
+          <ul id="nav-mobile" class="left hide-on-med-and-down">
+          </ul>
+        </div>
+      </nav>
+      <div class="row">
+        <form class="col s12">
+      <div class="row">
+  <div class="input-field col s6">
+      <i class="material-icons prefix">account_circle</i>
+      <input value="bradpitt" id="username" type="text" class="validate">
+      <label for="icon_prefix">Username</label>
+    </div>
+  <div class="input-field col s6">
+    <i class="material-icons prefix">live_help</i>
+    <input value="abc12345" id="password" type="password" class="validate">
+    <label for="icon_telephone">Password</label>
+  </div>
+</div>
+<button class="btn waves-effect waves-right right" type="submit" name="action" id="signin">sign in
+  <i class="material-icons rigt">send</i>
+</button>
+</form>
+<!--<div id="err" style="display:none" class="alert alert-danger alert-dismissable fade in">
+      <a href="#" class="close" data-dismiss="alert" aria-label="close">x</a>
+      <strong>Incorrect username or password</strong>
+      Please check your password.
+    </div>-->
+</div>
+      <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+      <script type="text/javascript" src="js/materialize.min.js"></script>
+      <script type="text/javascript">
+        $("#signin").click(function() {
+          var url = "http://membershipwebapi977290.azurewebsites.net/api/Members/signin?";
+          url += "username=" + $("#username").val();
+          url += "&password=" + $("#password").val();
+      console.log(url);
+      $.get(url, function(data, status) {
+        console.log(data);
+        if(data.status == true){
+              console.log(data.Status);
+        }else{
+              console.log(data.Status);
+          $("#err").show();
+          //window.location.href = "signup.html";
+        }
+      });
+    });
+  </script>
+
+    </body>
+  </html>
